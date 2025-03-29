@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cybercrime Report Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <h1>Upload Cybercrime Case Files</h1>
+        <form action="{{ url_for('logout') }}" method="post">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
+    
+    <form id="uploadForm" action="/" method="post" enctype="multipart/form-data">
+        <div class="file-upload-container">
+            <!-- File Input -->
+            <label class="file-label">
+                Choose Files
+                <input type="file" id="fileInput" name="files" multiple required hidden>
+            </label>
+            <span id="fileCount">No files selected</span>
+
+            <!-- Upload & Classify Button INSIDE the form -->
+            <button type="submit" class="classify-btn">
+                Upload & Classify
+            </button>
+        </div>
+    </form>
+
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function() {
+            let count = this.files.length;
+            document.getElementById('fileCount').innerText = count > 0 ? count + " files selected" : "No files selected";
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
